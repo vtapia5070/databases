@@ -3,20 +3,15 @@ CREATE DATABASE chat;
 USE chat;
 
 CREATE TABLE messages (
-  id INTEGER(3), 
-  username VARCHAR(25),
-  room VARCHAR(25),
-  message VARCHAR(500)
-  /* Describe your table here.*/
+  id INTEGER(3) AUTO_INCREMENT,
+  roomname VARCHAR(25),
+  message VARCHAR(500),
+  PRIMARY KEY (ID)
   
 );
 
-/* Create other tables and define schemas for them here! */
-
-
-
-
-/*  Execute this file from the command line by typing:
- *    mysql -u root < server/schema.sql
- *  to create the database and the tables.*/
-
+CREATE TABLE users (
+  id INTEGER(3) AUTO_INCREMENT,
+  username VARCHAR(25) NOT NULL,
+  PRIMARY KEY (ID)
+);

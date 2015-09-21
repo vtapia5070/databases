@@ -14,28 +14,28 @@ var sendResponse = function(res, data, status, err) {
 module.exports = {
   messages: {
     get: function (req, res) {
-      console.log("get files"); 
-      //query models
-      models.messages.get(function(data){
-        //console.log("this is data before response: ", data);
-        sendResponse(res, {results: data});
+      models.messages.get(function (results){
+        sendResponse(res, results);
       });
-      //respond with message
-    }, // a function which handles a get request for all messages
+    },
     post: function (req, res) {
-
-      models.messages.post(req.body, function () {
+      models.messages.post(req.body, function (results) {
+        console.log("user is ", results);
         sendResponse(res);
       });
-      //parse the post
-      //send that down to models
-    } // a function which handles posting a message to the database
+    }
   },
-
   users: {
-    // Ditto as above
-    get: function (req, res) {},
-    post: function (req, res) {}
+    get: function (req, res) {
+      models.users.get(function (results){
+        sendResponse(res, results);
+      });
+    },
+    post: function (req, res) {
+      models.users.post(req.body, function (results){
+        sendResponse(res);
+      });
+    }
   }
 };
 
